@@ -1,5 +1,6 @@
 import smtplib
 import configparser
+import os.path
 from email.mime.text import MIMEText
 
 
@@ -14,8 +15,9 @@ def send_mail(to_address, subject, message_body):
         message_body (str): The content of the message to be sent
     """
     # Get configuration file
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), 'weatherbot.ini')
     config = configparser.ConfigParser()
-    config.read('weatherbot.ini')
+    config.read(CONFIG_FILE_PATH)
 
     # Construct the message
     msg = MIMEText(message_body)

@@ -1,4 +1,5 @@
 import configparser
+import os.path
 from fetchweather import *
 from mail import *
 
@@ -11,8 +12,9 @@ def main():
     and location in the weatherbot.ini file
     """
     # Get configuration file
+    CONFIG_FILE_PATH = os.path.join(os.path.dirname(__file__), 'weatherbot.ini')
     config = configparser.ConfigParser()
-    config.read('weatherbot.ini')
+    config.read(CONFIG_FILE_PATH)
 
     # Get weather info
     data = get_current_forecast(config['weather']['coordinates'])
