@@ -17,12 +17,12 @@ def main():
     config.read(CONFIG_FILE_PATH)
 
     # Get weather info
-    data = fetchweather.get_current_forecast(config['weather']['coordinates'])
+    weather_data = fetchweather.get_current_forecast(config['weather']['coordinates'])
 
     # Send an email if the info was fetched successfully
-    if data != "Error":
-        print(data)
-        mail.send_mail(config['email']['to'], config['email']['subject'], data)
+    if weather_data != "Error":
+        print(weather_data)
+        mail.send_mail(config['email']['to'], config['email']['subject'], weather_data)
 
 
 main()
