@@ -22,7 +22,7 @@ def main():
     # Send an email if the info was fetched successfully
     if data != "Error":
         print(data)
-        mail.send_mail('sam.stifter@gmail.com', "Weather", data)
+        mail.send_mail(config['email']['to'], config['email']['subject'], data)
 
 
 main()
