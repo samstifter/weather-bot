@@ -1,7 +1,7 @@
 import configparser
 import os.path
-from fetchweather import *
-from mail import *
+import fetchweather
+import mail
 
 
 def main():
@@ -17,12 +17,12 @@ def main():
     config.read(CONFIG_FILE_PATH)
 
     # Get weather info
-    data = get_current_forecast(config['weather']['coordinates'])
+    data = fetchweather.get_current_forecast(config['weather']['coordinates'])
 
     # Send an email if the info was fetched successfully
     if data != "Error":
         print(data)
-        send_mail('sam.stifter@gmail.com', "Weather", data)
+        mail.send_mail('sam.stifter@gmail.com', "Weather", data)
 
 
 main()
