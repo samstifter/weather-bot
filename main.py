@@ -15,7 +15,7 @@ def main():
     config.read('weatherbot.ini')
 
     # Get weather info
-    data = get_current_forecast(config['location']['coordinates'])
+    data = get_current_forecast(config['weather']['coordinates'])
 
     # Send an email if the info was fetched successfully
     if data != "Error":
