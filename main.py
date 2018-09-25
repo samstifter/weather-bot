@@ -22,7 +22,13 @@ def main():
     # Send an email if the info was fetched successfully
     if weather_data != "Error":
         print(weather_data)
-        mail.send_mail(config['email']['to'], config['email']['subject'], weather_data)
+
+        # Split the list of emails
+        email_list = config['email']['to'].split(',')
+
+        # Send to each address in the list
+        for email in email_list:
+            mail.send_mail(email, config['email']['subject'], weather_data)
 
 
 main()
